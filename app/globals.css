@@ -24,7 +24,7 @@ body { background: #f0f5f0; color: #1d271f; font-family: var(--font-sans); }
 .scroll-mt-nav { scroll-margin-top: 140px; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
-.ticker:hover .ticker-track { animation-play-state: paused; }
+
 @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none !important; } html { scroll-behavior: auto; } }
 .btn { font-weight: 600; font-size: 14px; }
 .btn-primary { border-color: #047f39; box-shadow: 0 1px 2px rgb(0 0 0 / 0.08); }
