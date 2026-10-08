@@ -1,17 +1,19 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 import { updateUser, useSession } from "@/lib/auth-client";
 import { Field } from "@/components/AuthShell";
 
-export default function UpdateProfilePage() {
+function UpdateForm() {
   const router = useRouter();
+  const sp = useSearchParams();
   const { data, isPending } = useSession();
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
-  useEffect(() => { if (data?.user) setName(data.user.name); }, [data?.user]);
+  useEffect(() => { if (data?.user) setName(sp.get("name") || data.user.name); }, [data?.user, sp]);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -19,7 +21,7 @@ export default function UpdateProfilePage() {
     setBusy(true);
     const { error } = await updateUser({ name: name.trim() });
     setBusy(false);
-    if (error) return void toast.error(error.message || "তথ্য আপডেট করা যায়নি");
+    if (error) return void toast.error(`তথ্য আপডেট করা যায়নি: ${error.message || error.statusText || "অজানা সমস্যা"}`);
     toast.success("তথ্য সফলভাবে আপডেট হয়েছে");
     router.push("/profile");
     router.refresh();
@@ -43,3 +45,5 @@ export default function UpdateProfilePage() {
     </div>
   );
 }
+
+export default function UpdateProfilePage() { return <Suspense><UpdateForm /></Suspense>; }

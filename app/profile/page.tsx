@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { signOut, useSession } from "@/lib/auth-client";
@@ -9,6 +9,8 @@ export default function ProfilePage() {
   const router = useRouter();
   const { data, isPending } = useSession();
   const user = data?.user;
+  const [name, setName] = useState("");
+  useEffect(() => { if (user) setName(user.name); }, [user]);
 
   async function logout() {
     await signOut();
@@ -39,8 +41,8 @@ export default function ProfilePage() {
             <h2 className="text-lg font-semibold">তথ্য</h2>
             <div className="flex flex-col gap-4 p-6 pt-2">
               <label className="flex flex-col gap-1"><span className="text-sm font-medium">নাম</span>
-                <input readOnly value={user.name} className="input w-full" /></label>
-              <Link href="/profile/update" className="btn btn-primary w-full">আপডেট</Link>
+                <input value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" className="input w-full" /></label>
+              <button type="button" onClick={() => router.push(`/profile/update?name=${encodeURIComponent(name.trim() || user.name)}`)} className="btn btn-primary w-full">আপডেট</button>
             </div>
           </div>
         </>
