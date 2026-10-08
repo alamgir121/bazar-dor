@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@plugin "daisyui" { themes: false; }
+@plugin "daisyui/theme" {
+  name: "bazardor"; default: true; color-scheme: light;
+  --color-base-100: #fafcfa; --color-base-200: #f0f5f0; --color-base-300: #e1e8e1; --color-base-content: #1d271f;
+  --color-primary: #05893e; --color-primary-content: #f3fbf4;
+  --color-secondary: #1a9951; --color-secondary-content: #ffffff;
+  --color-accent: #1a9951; --color-accent-content: #ffffff;
+  --color-neutral: #1d271f; --color-neutral-content: #fafcfa;
+  --color-info: #1a9951; --color-info-content: #ffffff;
+  --color-success: #1a9951; --color-success-content: #ffffff;
+  --color-warning: #f59e0b; --color-warning-content: #1d271f;
+  --color-error: #d03739; --color-error-content: #fff6f5;
+  --radius-selector: 0.5rem; --radius-field: 0.5rem; --radius-box: 1rem;
+  --size-selector: 0.25rem; --size-field: 0.25rem; --border: 1px; --depth: 0; --noise: 0;
+}
+@theme {
+  --font-sans: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+  --animate-ticker: ticker 60s linear infinite;
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+}
+html { scroll-behavior: smooth; }
+body { background: #f0f5f0; color: #1d271f; font-family: var(--font-sans); }
+.scroll-mt-nav { scroll-margin-top: 140px; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .ticker-track { animation: none !important; } html { scroll-behavior: auto; } }
+.btn { font-weight: 600; font-size: 14px; }
+.btn-primary { border-color: #047f39; box-shadow: 0 1px 2px rgb(0 0 0 / 0.08); }
+.btn-primary:hover { background: #047f39; border-color: #037333; }
+.input, .select { background: #fafcfa; border-color: #e1e8e1; box-shadow: 0 1px 2px rgb(0 0 0 / 0.05); font-size: 14px; }
+.input:focus, .select:focus { outline: 2px solid #05893e; outline-offset: 1px; }
