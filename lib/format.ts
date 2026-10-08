@@ -1,7 +1,7 @@
 const BN = ["০","১","২","৩","৪","৫","৬","৭","৮","৯"];
 export const toBn = (v: string | number) => String(v).replace(/\d/g, (d) => BN[+d]);
 
-// Bangladeshi grouping: ১,২৯০ / ১,৮৫০ ; two decimals only when fractional
+
 export function formatPrice(n: number) {
   const frac = Math.abs(n - Math.round(n)) > 1e-9;
   return new Intl.NumberFormat("bn-BD", { minimumFractionDigits: frac ? 2 : 0, maximumFractionDigits: 2 }).format(n);
