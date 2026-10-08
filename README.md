@@ -24,6 +24,6 @@ Technology Used:
 Getting Started 
 
 Clone the repository
-Go to the project folder
-npm install
-npm run dev
+1.Go to the project folder
+2.npm install
+3.npm run dev
