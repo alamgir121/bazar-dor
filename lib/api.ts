@@ -44,7 +44,7 @@ function useAsync<T>(fn: () => Promise<T>) {
     let alive = true;
     fn().then((d) => alive && setData(d)).catch(() => alive && setError(true));
     return () => { alive = false; };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, []);
   return { data, error, loading: !data && !error };
 }
