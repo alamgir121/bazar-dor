@@ -5,7 +5,7 @@ import { formatPct, formatPrice, unitBn } from "@/lib/format";
 export default function Ticker() {
   const { data } = useProducts();
   return (
-    <div className="ticker h-[37px] overflow-hidden border-b border-base-300 bg-base-100" aria-label="দামের তালিকা">
+    <div className="relative z-0 ticker h-[37px] overflow-hidden border-b border-base-300 bg-base-100" aria-label="দামের তালিকা">
       {data ? (
         <div className="ticker-track flex w-max animate-ticker">
           {[...data, ...data].map((p, i) => {
