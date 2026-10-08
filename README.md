@@ -10,6 +10,8 @@ Technology Used:
 5. Better Auth
 6. MongoDB
 7. react-hot-toast
+8. Hind Siliguri font
+
 
 
 5 key features of the project
